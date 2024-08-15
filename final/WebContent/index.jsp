@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Save Data to RDS-jenkins two</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -28,14 +29,25 @@
     </style>
 </head>
 <body>
+    <div class="card">
+        <h2 class="mb-4">Save Data to RDS - EKS to RDS</h2>
+        <form id="dataForm" method="post" action="saveData" onsubmit="return handleSubmit()">
+            <input type="text" name="data" class="form-control mb-3" placeholder="Enter some data" required />
+            <button type="submit" class="btn btn-primary btn-block">Save to Database</button>
+        </form>
+    </div>
 
-<div class="card">
-    <h2 class="mb-4">Save Data to RDS</h2>
-    <form method="post">
-        <input type="text" name="data" class="form-control mb-3" placeholder="Enter some data" required />
-        <button type="submit" class="btn btn-primary btn-block">Save to Database</button>
-    </form>
-</div>
-
+    <script>
+        function handleSubmit() {
+            // 데이터 전송 후 팝업 메시지 표시
+            alert("complete!");
+            
+            // 팝업에서 확인 버튼을 누르면 페이지를 다시 로드
+            location.reload();
+            
+            // true를 반환하여 form이 정상적으로 전송되도록 함
+            return true;
+        }
+    </script>
 </body>
 </html>
