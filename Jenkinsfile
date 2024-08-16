@@ -1,12 +1,35 @@
-node {
-    stage('Clone Repository'){
-        checkout scm
-    }
+pipeline {
+  agent any
 
-    stage('Build to ECR'){
+  environment {
+  	AWS_REGION = 'your-aws-region'
+    ECR_REGISTRY = '058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
+    ECR_REPOSITORY = 'jenkins-ecr'
+    IMAGE_TAG = "${env.BUILD_ID}"
+  }
 
-    }
-    stage('Kubernetes'){
-        
+ stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}")
+                }
+            }
+        }
+        stage('Push to ECR') {
+            steps {
+                script {
+                    docker.withRegistry("https://${ECR_REGISTRY}", 'ecr:login') {
+                        dockerImage.push("${IMAGE_TAG}")
+                        dockerImage.push('latest')
+                    }
+                }
+            }
+        }
     }
 }
