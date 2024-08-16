@@ -45,6 +45,7 @@
             // 팝업에서 확인 버튼을 누르면 페이지를 다시 로드
             location.reload();
             
+            
             // true를 반환하여 form이 정상적으로 전송되도록 함
             return true;
         }
