@@ -1,6 +1,5 @@
 # Step 1: Base Image 선택
 # Tomcat 9과 JDK 11이 설치된 이미지를 사용합니다.
-
 FROM tomcat:9.0-jdk11
 
 # Step 2: 소스 코드 복사
@@ -17,3 +16,4 @@ COPY final/WebContent/WEB-INF/lib/mysql-connector-j-9.0.0.jar /usr/local/tomcat/
 
 # Step 5: Tomcat 서버 실행
 CMD ["catalina.sh", "run"]
+
