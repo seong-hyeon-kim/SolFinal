@@ -24,7 +24,7 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 script {
-                    docker.withRegistry("https://${ECR_REGISTRY}", 'ecr:login') {
+                    docker.withRegistry("https://${ECR_REGISTRY}", 'aws-credentials-id') {
                         dockerImage.push("${IMAGE_TAG}")
                         dockerImage.push('latest')
                     }
