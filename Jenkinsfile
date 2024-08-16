@@ -26,7 +26,7 @@ pipeline {
                 script {
                         sh 'aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY'
                         dockerImage.push("${IMAGE_TAG}")
-                        dockerImage.push('latest')
+                        // dockerImage.push('latest')
                 }
             }
         }
