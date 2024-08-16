@@ -2,14 +2,14 @@ pipeline {
   agent any
 
   environment {
-  	AWS_REGION = 'your-aws-region'
+    AWS_REGION = 'ap-northeast-2'
     ECR_REGISTRY = '058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
     ECR_REPOSITORY = 'jenkins-ecr'
     IMAGE_TAG = "${env.BUILD_ID}"
   }
 
  stages {
-        stage('Checkout!') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
