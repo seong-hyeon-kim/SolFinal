@@ -6,7 +6,7 @@ pipeline {
     ECR_REGISTRY = '058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
     ECR_REPOSITORY = 'jenkins-ecr'
     githubCredential = 'b3554db2-0a4a-48c6-a9df-050674004325'
-    IMAGE_TAG = env.BUILD_ID
+    IMAGE_TAG = "${env.BUILD_ID}"
     gitEmail = 'sung44428@gmail.com'
     gitName = 'seong-hyeon-kim'
   }
