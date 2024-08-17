@@ -5,11 +5,14 @@ pipeline {
     AWS_REGION = 'ap-northeast-2'
     ECR_REGISTRY = '058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
     ECR_REPOSITORY = 'jenkins-ecr'
+    githubCredential = 'b3554db2-0a4a-48c6-a9df-050674004325'
     IMAGE_TAG = env.BUILD_ID
+    gitEmail = 'sung44428@gmail.com'
+    gitName = 'seong-hyeon-kim'
   }
 
  stages {
-        stage('Checkout') {  // 스테이지 이름을 간결하게 수정
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -26,8 +29,21 @@ pipeline {
                 script {
                     sh 'aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}'
                     dockerImage.push("${IMAGE_TAG}")
-                    // dockerImage.push('latest')
                 }
+            }
+        }
+        stage('K8S Manifest Update') {
+            steps {
+                git credentialsId: githubCredential,
+                    url: 'https://github.com/seong-hyeon-kim/SolFinal.git',
+                    branch: 'main'  
+
+                sh "git config --global user.email ${gitEmail}"
+                sh "git config --global user.name ${gitName}"
+                sh "sed -i 's|${ECR_REGISTRY}/${ECR_REPOSITORY}:.*|${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' k8s/tomcat-deployment.yaml"
+                sh "git add ."
+                sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${IMAGE_TAG} image versioning'"
+                sh "git push -u origin main"
             }
         }
     }
