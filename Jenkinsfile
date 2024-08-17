@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('K8S Manifest Update') {
+        stage('K8S Manifest Updatee') {
             steps {
 		git credentialsId: githubCredential,
      	        url: 'https://github.com/seong-hyeon-kim/SolFinal.git',
