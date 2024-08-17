@@ -12,9 +12,25 @@ pipeline {
   }
 
  stages {
+      stage('Check Commit Message') {
+          steps {
+              script {
+                  def commitMessage = sh(returnStdout: true, script: 'git log -1 --pretty=%B').trim()
+                  if (commitMessage.contains("[ci skip]")) {
+                      currentBuild.result = 'SUCCESS'
+                      error("Build skipped due to commit message containing [ci skip]")
+                  }
+              }
+          }
+      }
+
+
+
+
         stage('Checkout') {
             steps {
-                checkout scm
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/seong-hyeon-kim/SolFinal.git']]])
+
             }
         }
         stage('Build Docker Image') {
