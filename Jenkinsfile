@@ -33,7 +33,13 @@ pipeline {
             }
         }
         stage('K8S Manifest Updatee') {
-            steps {
+	    when {
+       		 expression {
+         		 return sh(script: "git log -1 --pretty=%B | grep '\\[ci skip\\]'", returnStatus: true) != 0
+       		 }
+     	       }
+           
+	        steps {
 		git credentialsId: githubCredential,
      	        url: 'https://github.com/seong-hyeon-kim/SolFinal.git',
                 branch: 'main'               
