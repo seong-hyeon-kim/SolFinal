@@ -45,7 +45,6 @@ pipeline {
                 sh "sed -i 's|${ECR_REGISTRY}/${ECR_REPOSITORY}:.*|${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' final/k8s/tomcat-deployment.yaml"
                 sh "git add ."
                 sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${IMAGE_TAG} image versioning'"
-		sh "git branch -M main"
        	        sh "git remote remove origin"
                 sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"	       
                 sh "git push -u origin main"
