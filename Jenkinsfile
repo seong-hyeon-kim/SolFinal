@@ -34,9 +34,9 @@ pipeline {
         }
         stage('K8S Manifest Update') {
             steps {
-                git credentialsId: 'b3554db2-0a4a-48c6-a9df-050674004325',
-                    url: 'https://github.com/seong-hyeon-kim/SolFinal.git',
-                    branch: 'main'  
+		sh "git remote remove origin"
+  	        sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"                 
+
 
                 sh "git config --global user.email ${gitEmail}"
                 sh "git config --global user.name ${gitName}"
