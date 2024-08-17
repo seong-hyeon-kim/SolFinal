@@ -40,7 +40,7 @@ pipeline {
 
                 sh "git config --global user.email ${gitEmail}"
                 sh "git config --global user.name ${gitName}"
-                sh "sed -i 's|${ECR_REGISTRY}/${ECR_REPOSITORY}:.*|${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' k8s/tomcat-deployment.yaml"
+                sh "sed -i 's|${ECR_REGISTRY}/${ECR_REPOSITORY}:.*|${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG}|g' final/k8s/tomcat-deployment.yaml"
                 sh "git add ."
                 sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${IMAGE_TAG} image versioning'"
                 sh "git push -u origin main"
