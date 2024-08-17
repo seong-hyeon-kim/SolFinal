@@ -34,6 +34,10 @@ pipeline {
         }
         stage('K8S Manifest Update') {
             steps {
+		sh 'mkdir -p /var/lib/jenkins/.ssh'
+		sh 'ssh-keyscan github.com >> /var/lib/jenkins/.ssh/known_hosts'
+             
+
 		sh "git remote remove origin"
   	        sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"                 
 
