@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tomcat
-        image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:86
+        image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:87
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
