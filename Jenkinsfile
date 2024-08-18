@@ -18,6 +18,23 @@ pipeline {
   }
  
   stages {
+	
+    stage('Check for [skip ci]') {
+        steps {
+            script {
+                def commitMessage = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                if (commitMessage.contains('[skip ci]')) {
+                    echo "Skipping build due to commit message: ${commitMessage}"
+                    currentBuild.result = 'SUCCESS'
+                    error("Build skipped due to [skip ci] tag in the commit message.")
+                } else {
+                    echo "No [skip ci] found in the commit message. Proceeding with the build."
+                }
+            }
+        }
+    }
+
+
  
     // 깃허브 계정으로 레포지토리를 클론한다.
     stage('Checkout Application Git Branch') {
@@ -115,7 +132,7 @@ pipeline {
 	sh "pwd"
 	sh "sed -i 's|image: .*|image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:${currentBuild.number}|' final/k8s/tomcat-deployment.yaml"
         sh "git add ."
-        sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${currentBuild.number} image versioning'"
+        sh "git commit -m '[skip ci] fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${currentBuild.number} image versioning'"
         sh "git branch -M main"
         sh "git remote remove origin"
         sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"
