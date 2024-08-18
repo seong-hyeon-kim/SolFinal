@@ -112,6 +112,7 @@ pipeline {
         // 이미지 태그 변경 후 메인 브랜치에 푸시
         sh "git config --global user.email ${gitEmail}"
         sh "git config --global user.name ${gitName}"
+	sh "pwd"
         sh "sed -i 's/tomcat:.*/tomcat:${currentBuild.number}/g' final/k8s/tomcat-deployment.yaml"
         sh "git add ."
         sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${currentBuild.number} image versioning'"
