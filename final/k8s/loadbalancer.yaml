@@ -3,7 +3,10 @@ kind: Service
 metadata:
   name: tomcat-service-loadbalancer
   annotations:
-   service.beta.kubernetes.io/aws-load-balancer-type: "nlb"  # NLB를 사용하기 위한 주석
+   service.beta.kubernetes.io/aws-load-balancer-type: "alb"  # NLB를 사용하기 위한 주석
+   service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:ap-northeast-2:058264360223:certificate/68a5235d-d35d-4ff5-a952-8049aa425bf9"
+   service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443" # HTTPS 포트 지정
+   service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"
 spec:
   type: LoadBalancer
   selector:
