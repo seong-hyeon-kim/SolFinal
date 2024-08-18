@@ -118,7 +118,7 @@ pipeline {
         sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${currentBuild.number} image versioning'"
         sh "git branch -M main"
         sh "git remote remove origin"
-        sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"
+        sh "git remote add origin git@github.com:seong-hyeon-kim/SolFinal.git"
         sh "git push -u origin main"
       }
       post {
