@@ -70,7 +70,7 @@ pipeline {
     stage('Docker Image Push') {
       steps {
 	// AWS 자격 증명을 사용하여 ECR 로그인 및 Docker 이미지 푸시
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'your-aws-credentials-id']]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'jenkins-aws-credentials']]) {
             // ECR 로그인
             sh 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
 
