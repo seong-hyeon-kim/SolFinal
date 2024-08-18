@@ -69,12 +69,14 @@ pipeline {
  
     stage('Docker Image Push') {
       steps {
+	// AWS 자격 증명을 사용하여 ECR 로그인 및 Docker 이미지 푸시
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'your-aws-credentials-id']]) {
             // ECR 로그인
             sh 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com'
 
             // Docker 이미지 태그 설정
-            sh "docker tag ${IMAGE_NAME}:${currentBuild.number} ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
-            sh "docker tag ${IMAGE_NAME}:${currentBuild.number} ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
+            sh "docker tag ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number} ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
+            sh "docker tag ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number} ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
 
             // ECR에 Docker 이미지 푸시
             sh "docker push ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
@@ -82,6 +84,7 @@ pipeline {
 
             // 10초 쉰 후에 다음 작업 이어나가도록 함
             sleep 10
+        }
         } 
       
  
