@@ -83,7 +83,7 @@ pipeline {
             // 10초 쉰 후에 다음 작업 이어나가도록 함
             sleep 10
         } 
-      }
+      
  
       post {
         failure {
