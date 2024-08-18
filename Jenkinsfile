@@ -88,13 +88,13 @@ pipeline {
       post {
         failure {
           echo 'Docker Image Push failure'
-          sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
-          sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
+          // sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
+          // sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
         }
         success {
           echo 'Docker Image Push success'
-          sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
-          sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
+          // sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:${currentBuild.number}"
+          // sh "docker rmi ${ECR_REGISTRY}/${ECR_REPOSITORY}:latest"
         }
       }
     }
