@@ -8,7 +8,7 @@ metadata:
    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443" # HTTPS 포트 지정
    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"
 spec:
-  type: LoadBalancer
+  type: ClusterIP #LoadBalancer
   selector:
     app: tomcat
   ports:
