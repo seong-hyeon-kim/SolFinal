@@ -12,7 +12,7 @@ COPY final/build/classes/ /usr/local/tomcat/webapps/ROOT/WEB-INF/classes/
 
 # Step 4: 라이브러리 복사
 # 필요한 라이브러리 (예: MySQL 커넥터)를 Tomcat의 lib 디렉토리에 복사합니다.
-COPY final/WebContent/WEB-INF/lib/mysql-connector-j-9.0.0.jar /usr/local/tomcat/lib/
+COPY final/WebContent/WEB-INF/lib/mysql-connector-j-8.0.32.jar /usr/local/tomcat/lib/
 
 # Step 5: Tomcat 서버 실행
 CMD ["catalina.sh", "run"]
