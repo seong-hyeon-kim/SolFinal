@@ -113,7 +113,7 @@ pipeline {
         sh "git config --global user.email ${gitEmail}"
         sh "git config --global user.name ${gitName}"
 	sh "pwd"
-        sh "sed -i 's/tomcat:.*/tomcat:${currentBuild.number}/g' final/k8s/tomcat-deployment.yaml"
+	sh "sed -i 's|image: .*|image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:${currentBuild.number}|' final/k8s/tomcat-deployment.yaml"
         sh "git add ."
         sh "git commit -m 'fix:${ECR_REGISTRY}/${ECR_REPOSITORY} ${currentBuild.number} image versioning'"
         sh "git branch -M main"
