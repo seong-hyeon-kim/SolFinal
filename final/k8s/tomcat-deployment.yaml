@@ -14,13 +14,11 @@ spec:
       labels:
         app: tomcat
     spec:
+      nodeSelector:
+        nodegroup: tomcat  # 이 부분을 추가하여 특정 노드 그룹에 배포되도록 설정
       containers:
       - name: tomcat
         image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:27
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        
-        
-        
-        
