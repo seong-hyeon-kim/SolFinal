@@ -22,11 +22,4 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        volumeMounts:  # 이 섹션을 추가하여 PVC를 컨테이너에 마운트
-        - name: efs-storage
-          mountPath: /usr/local/tomcat/webapps  # Tomcat의 적절한 디렉토리에 마운트
-      volumes:  # 이 섹션을 추가하여 PVC를 정의
-      - name: efs-storage
-        persistentVolumeClaim:
-          claimName: efs-pvc  # 여기에 사용하려는 PVC의 이름을 넣습니다.
 
