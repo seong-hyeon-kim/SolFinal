@@ -15,10 +15,18 @@ spec:
         app: tomcat
     spec:
       nodeSelector:
-        nodegroup: tomcat  # 이 부분을 추가하여 특정 노드 그룹에 배포되도록 설정
+        nodegroup: tomcat
       containers:
       - name: tomcat
         image: 058264360223.dkr.ecr.ap-northeast-2.amazonaws.com/jenkins-ecr:27
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        volumeMounts:  # 이 섹션을 추가하여 PVC를 컨테이너에 마운트
+        - name: efs-storage
+          mountPath: /usr/local/tomcat/webapps  # Tomcat의 적절한 디렉토리에 마운트
+      volumes:  # 이 섹션을 추가하여 PVC를 정의
+      - name: efs-storage
+        persistentVolumeClaim:
+          claimName: efs-pvc  # 여기에 사용하려는 PVC의 이름을 넣습니다.
+
