@@ -30,7 +30,7 @@
 </head>
 <body>
     <div class="card">
-        <h2 class="mb-4">Save Data to RDS - HI </h2>
+        <h2 class="mb-4">Save Data to RDS - HIHIHIHIHIHIHIHIHIHIHIHI </h2>
         <form id="dataForm" method="post" action="saveData" onsubmit="return handleSubmit()">
             <input type="text" name="data" class="form-control mb-3" placeholder="Enter some data" required />
             <button type="submit" class="btn btn-primary btn-block">Save to Database</button>
