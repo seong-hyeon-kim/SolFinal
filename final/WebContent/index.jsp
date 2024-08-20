@@ -30,8 +30,8 @@
 </head>
 <body>
     <div>
-	 <img src="/web-data/efs-pvc-19bfcc6a-f217-4671-ad76-e96472f3e399/sea.jpg" alt="Sea Image" style="width: 300px; height: auto;"
-         <img src="/web-data/efs-pvc-19bfcc6a-f217-4671-ad76-e96472f3e399/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">	
+	 <img src="/web-data/efs-pvc-f035e304-ea70-4d7e-bbf5-09320ed94477/sea.jpg" alt="Sea Image" style="width: 300px; height: auto;"
+         <img src="/web-data/efs-pvc-f035e304-ea70-4d7e-bbf5-09320ed94477/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">	
     </div>
 
 
