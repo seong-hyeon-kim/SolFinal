@@ -51,5 +51,5 @@ spec:
       volumes:
         - name: pv-volume
           nfs:
-            server: fs-0b6b941f6622ca81d.efs.ap-northeast-2.amazonaws.com
+            server: fs-0041f7ccc868e0f9d.efs.ap-northeast-2.amazonaws.com
             path: /

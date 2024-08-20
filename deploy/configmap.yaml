@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: efs-provisioner
 data:
-  file.system.id: fs-0b6b941f6622ca81d
+  file.system.id: fs-0041f7ccc868e0f9d
   aws.region: ap-northeast-2
   provisioner.name: tjdgus.com/aws-efs
   dns.name: ""
