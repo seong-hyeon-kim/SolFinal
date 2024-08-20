@@ -29,6 +29,12 @@
     </style>
 </head>
 <body>
+    <div>
+	 <img src="/web-data/efs-pvc-19bfcc6a-f217-4671-ad76-e96472f3e399/sea.jpg" alt="Sea Image" style="width: 300px; height: auto;"
+         <img src="/web-data/efs-pvc-19bfcc6a-f217-4671-ad76-e96472f3e399/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">	
+    </div>
+
+
     <div class="card">
         <h2 class="mb-4">!!!Save Data to RDS!!!</h2>
         <form id="dataForm" method="post" action="saveData" onsubmit="return handleSubmit()">
