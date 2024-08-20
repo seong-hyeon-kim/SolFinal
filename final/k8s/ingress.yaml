@@ -1,0 +1,28 @@
+# ingress.yaml apply 이후 kubectl get ingress -A -o wide 명령어로 확인
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tomcat-ingress
+  namespace: default  # 네임스페이스를 필요에 따라 변경
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing  # 외부 접근을 허용하는 ALB로 설정
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'  # HTTP와 HTTPS 포트 설정
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:058264360223:certificate/68a5235d-d35d-4ff5-a952-8049aa425bf9  # ACM 인증서 ARN 입력 !!!!!
+    alb.ingress.kubernetes.io/ssl-redirect: "443"  #	# alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb  # 여기에 ingressClassName 필드를 추가합니다.
+  rules:
+    - host: www.tjdgus.store  # 도메인 이름 !!!!!
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: tomcat-service-loadbalancer  # NLB로 라우팅하는 내부 서비스 이름 !!!!!
+                port:
+                  number: 80
+  #  tls:
+    #   - hosts:
+      #   - www.tjdgus.store
+          #  secretName: your-tls-secret  # AWS에서 관리되는 ACM 인증서를 사용하므로 이 필드는 무시될 수 있습니다 !!!!!
