@@ -31,9 +31,13 @@
 <body>
     <div>
 	 <img src="/web-data/sea.jpg" alt="Sea Image" style="width: 300px; height: auto;"
-         <img src="/web-data/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">	
     </div>
 
+
+   <div>
+         <img src="/web-data/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">
+    </div>
+	 
 
     <div class="card">
         <h2 class="mb-4">!!!Save Data to RDS!!!</h2>

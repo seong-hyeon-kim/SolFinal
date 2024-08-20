@@ -47,7 +47,7 @@ spec:
                   key: provisioner.name
           volumeMounts:
             - name: pv-volume
-              mountPath: /persistentvolumes
+              mountPath: /usr/local/tomcat/webapps/web-data
       volumes:
         - name: pv-volume
           nfs:
