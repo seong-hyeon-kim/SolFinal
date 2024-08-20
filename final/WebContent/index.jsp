@@ -30,12 +30,12 @@
 </head>
 <body>
     <div>
-	 <img src="/web-data/sea.jpg" alt="Sea Image" style="width: 300px; height: auto;"
+	 <img src="/web-data/soldeskcolorimg.png" alt="Sea Image" style="width: 300px; height: auto;"
     </div>
 
 
    <div>
-         <img src="/web-data/sunjpeg.jpeg" alt="Sun Image" style="width: 300px; height: auto;">
+         <img src="/web-data/soldeskimg.jpg" alt="Sun Image" style="width: 300px; height: auto;">
     </div>
 	 
 
