@@ -22,4 +22,10 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-
+        volumeMounts:
+        - name: efs-volume
+          mountPath: /web-data  # EFS가 마운트될 경로
+      volumes:
+      - name: efs-volume
+        persistentVolumeClaim:
+          claimName: efs  # 이미 존재하는 PVC의 이름
