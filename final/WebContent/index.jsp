@@ -43,7 +43,6 @@
 <body>
     <div class="container">
         <img src="/web-data/soldeskcolorimg.png" alt="Sea Image" style="width: 300px; height: auto;">
-        <img src="/web-data/soldeskimg.jpg" alt="Sun Image" style="width: 300px; height: auto;">
         
         <div class="card">
             <h2 class="mb-4">!!!!!Save Data to RDS!!!!!</h2>
