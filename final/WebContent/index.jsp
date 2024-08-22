@@ -13,10 +13,19 @@
             height: 100vh;
             margin: 0;
         }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         .card {
+            margin-top: 20px;
             padding: 2rem;
             border-radius: 0.5rem;
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
         }
         .form-control {
             height: 3rem;
@@ -26,25 +35,23 @@
             font-size: 1.2rem;
             padding: 0.75rem 1.5rem;
         }
+        img {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <div>
-	 <img src="/web-data/soldeskcolorimg.png" alt="Sea Image" style="width: 300px; height: auto;"
-    </div>
-
-
-   <div>
-         <img src="/web-data/soldeskimg.jpg" alt="Sun Image" style="width: 300px; height: auto;">
-    </div>
-	 
-
-    <div class="card">
-        <h2 class="mb-4">!!!!!Save Data to RDS!!!!!</h2>
-        <form id="dataForm" method="post" action="saveData" onsubmit="return handleSubmit()">
-            <input type="text" name="data" class="form-control mb-3" placeholder="Enter some data" required />
-            <button type="submit" class="btn btn-primary btn-block">Save to Database</button>
-        </form>
+    <div class="container">
+        <img src="/web-data/soldeskcolorimg.png" alt="Sea Image" style="width: 300px; height: auto;">
+        <img src="/web-data/soldeskimg.jpg" alt="Sun Image" style="width: 300px; height: auto;">
+        
+        <div class="card">
+            <h2 class="mb-4">!!!!!Save Data to RDS!!!!!</h2>
+            <form id="dataForm" method="post" action="saveData" onsubmit="return handleSubmit()">
+                <input type="text" name="data" class="form-control mb-3" placeholder="Enter some data" required />
+                <button type="submit" class="btn btn-primary btn-block">Save to Database</button>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -55,10 +62,10 @@
             // 팝업에서 확인 버튼을 누르면 페이지를 다시 로드
             location.reload();
             
-            
             // true를 반환하여 form이 정상적으로 전송되도록 함
             return true;
         }
     </script>
 </body>
 </html>
+
